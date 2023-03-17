@@ -126,6 +126,7 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:text="Login"
+                android:onClick="LoginClicked"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
