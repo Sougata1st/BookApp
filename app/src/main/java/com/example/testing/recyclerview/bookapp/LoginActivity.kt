@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
@@ -44,9 +45,10 @@ class LoginActivity : AppCompatActivity() {
         validateData()
     }
 
-    private var email = binding.emailEt.text.toString().trim()
-    private var pass = binding.passwordEt.text.toString().trim()
+
     private fun validateData() {
+         var email = binding.emailEt.text.toString().trim()
+         var pass = binding.passwordEt.text.toString().trim()
         if (email.isEmpty()) {
             Toast.makeText(this, "Enter your name...", Toast.LENGTH_SHORT).show()
         } else if (pass.isEmpty()) {
@@ -54,11 +56,11 @@ class LoginActivity : AppCompatActivity() {
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Invalid Email...", Toast.LENGTH_SHORT).show()
         } else {
-            loginUser()
+            loginUser(email,pass)
         }
     }
 
-    private fun loginUser() {
+    private fun loginUser(email: String, pass: String) {
         // 3) Login - Firebase Auth
         progressDialog.setMessage("Logging in...")
         progressDialog.show()

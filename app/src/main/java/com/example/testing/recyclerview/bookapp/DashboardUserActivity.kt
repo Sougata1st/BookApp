@@ -32,4 +32,9 @@ class DashboardUserActivity : AppCompatActivity() {
         firebaseAuth.signOut()
         checkuser()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+    }
 }

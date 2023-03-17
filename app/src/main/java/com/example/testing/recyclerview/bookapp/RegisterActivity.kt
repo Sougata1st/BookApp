@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
@@ -52,6 +53,7 @@ class RegisterActivity : AppCompatActivity() {
         email = binding.RegisterEmailEt.text.toString().trim()
         pass = binding.RegisterPassEt.text.toString().trim()
         cpass = binding.RegisterConfirmPassEt.text.toString().trim()
+        Log.e("sougata",pass.toString())
         if (name.isEmpty()) {
             Toast.makeText(this, "Enter your name...", Toast.LENGTH_SHORT).show()
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -104,14 +106,14 @@ class RegisterActivity : AppCompatActivity() {
             "user" // possible values are user and admin , will change value to admin manually in firebase db
         hashMap["timestamp"] = timestamp
 
-         FirebaseDatabase.getInstance().getReference("Users")
-            .child(uid!!)
+         val ref =FirebaseDatabase.getInstance().getReference("Users")
+            ref.child(uid!!)
             .setValue(hashMap)
             .addOnSuccessListener {
                 //user info saved , open user dashboard
                 progressDialog.dismiss()
                 Toast.makeText(this,"account created...",Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this,DashboardAdminActivity::class.java))
+                startActivity(Intent(this,DashboardUserActivity::class.java))
             }
             .addOnFailureListener{e->
                 //failed adding data to db
