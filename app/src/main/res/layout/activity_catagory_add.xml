@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CatagoryAddActivity">
+
+<!--    toolbar-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/shape_toolbar01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:onClick="AddCatbackbtnClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_back_white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent"
+            android:layout_margin="10dp"
+            android:padding="10dp"/>
+
+        <ImageView
+            android:id="@+id/iconV"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.31" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Add new Catagory"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/iconV"
+            app:layout_constraintStart_toStartOf="@+id/iconV"
+            app:layout_constraintTop_toBottomOf="@+id/iconV" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginEnd="30dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--            email-->
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_til"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/AddPdfEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext01"
+                    android:drawableStart="@drawable/ic_catagory"
+                    android:drawablePadding="10dp"
+                    android:hint="Catagory Title"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray01" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="Submitclicked"
+                android:background="@drawable/shape_button01"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name_til"
+                android:text="Submit"
+                android:textColor="@color/white"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

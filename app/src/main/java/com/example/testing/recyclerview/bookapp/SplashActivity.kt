@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         FirebaseAuth = com.google.firebase.auth.FirebaseAuth.getInstance()
         Handler().postDelayed({
             cheakuser()
-        }, 1000)
+        }, 500)
     }
 
     private fun cheakuser() {
@@ -35,13 +35,16 @@ class SplashActivity : AppCompatActivity() {
                         val userType = snapshot.child("userType").value
                         if (userType == "user") {
                             startActivity(Intent(this@SplashActivity, DashboardUserActivity::class.java))
+                            finish()
                         } else if (userType == "admin"){
                             startActivity(
                                 Intent(
                                     this@SplashActivity,
                                     DashboardAdminActivity::class.java
                                 )
+
                             )
+                            finish()
                         }
                     }
 
