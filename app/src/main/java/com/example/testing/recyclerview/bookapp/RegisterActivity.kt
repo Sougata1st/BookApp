@@ -106,7 +106,7 @@ class RegisterActivity : AppCompatActivity() {
             "user" // possible values are user and admin , will change value to admin manually in firebase db
         hashMap["timestamp"] = timestamp
 
-         val ref =FirebaseDatabase.getInstance().getReference("Users")
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
             ref.child(uid!!)
             .setValue(hashMap)
             .addOnSuccessListener {

@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back01"
-    tools:context=".RegisterActivity">
+    tools:context=".PdfAddActivity">
 
-<!--    toolbar-->
+    <!--    Toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -18,15 +18,15 @@
 
         <ImageButton
             android:id="@+id/backBtn"
-            android:onClick="backbtnClicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/ic_back_white"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@android:color/transparent"
             android:layout_margin="10dp"
-            android:padding="10dp"/>
+            android:background="@android:color/transparent"
+            android:onClick="backbtnClicked"
+            android:padding="10dp"
+            android:src="@drawable/ic_back_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iconV"
@@ -43,13 +43,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
-            android:text="Create New Account"
+            android:text="Add a New Book"
             android:textColor="@color/white"
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="@+id/iconV"
             app:layout_constraintStart_toStartOf="@+id/iconV"
             app:layout_constraintTop_toBottomOf="@+id/iconV" />
 
+        <!--        Attach pdf button-->
+        <ImageButton
+            android:onClick="attachPdfBtnClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:src="@drawable/ic_attach_file"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -64,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!--            email-->
+            <!--            Title-->
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -77,111 +88,76 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/nameEt"
+                    android:id="@+id/titleEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_edittext01"
-                    android:drawableStart="@drawable/ic_person"
+                    android:drawableStart="@drawable/ic_pdf_gray"
                     android:drawablePadding="10dp"
-                    android:hint="Name"
-                    android:inputType="textPersonName"
+                    android:hint="Book Title"
+                    android:inputType="textPersonName|textCapWords"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray01" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            email-->
+            <!--            Input Description-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/descriptionTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 app:hintEnabled="false"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleTil"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/titleTil">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/RegisterEmailEt"
+                    android:id="@+id/descriptionEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_edittext01"
-                    android:drawableStart="@drawable/ic_email_grey"
+                    android:drawableStart="@drawable/ic_pdf_gray"
                     android:drawablePadding="10dp"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
+                    android:hint="Book Description"
+                    android:inputType="textMultiLine|text|textCapSentences"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray01" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <!--             password-->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/regPass_til"
+            <!--            Pick Category from dialog-->
+            <TextView
+                android:id="@+id/categoryTv"
                 android:layout_width="match_parent"
+                android:onClick="BookCategoryClicked"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:passwordToggleEnabled="true"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionTil"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/RegisterPassEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_edittext01"
-                    android:drawableStart="@drawable/ic_lock_gray"
-                    android:drawablePadding="10dp"
-                    android:hint="Password"
-                    android:inputType="textEmailAddress"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray01" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/regconfirmPass_til"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                app:hintEnabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:passwordToggleEnabled="true"
-                app:layout_constraintTop_toBottomOf="@+id/regPass_til"
-                >
+                android:background="@drawable/shape_edittext01"
+                android:drawableStart="@drawable/ic_category_gray"
+                android:drawableEnd="@drawable/ic_down_gray"
+                android:padding="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/gray01"
+                android:hint="Book Category"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/RegisterConfirmPassEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_edittext01"
-                    android:drawableStart="@drawable/ic_lock_gray"
-                    android:drawablePadding="10dp"
-                    android:hint="COnfirm Password"
-                    android:inputType="textEmailAddress"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray01" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="registerclicked"
-                android:background="@drawable/shape_button01"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/shape_button01"
+                android:onClick="uploadCLicked"
+                android:text="Upload"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/regconfirmPass_til"
-                android:text="Register"
-                android:textColor="@color/white"/>
+                app:layout_constraintTop_toBottomOf="@+id/categoryTv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

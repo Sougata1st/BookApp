@@ -104,4 +104,8 @@ class DashboardAdminActivity : AppCompatActivity() {
         startActivity(Intent(this, CatagoryAddActivity::class.java))
     }
 
+    fun FabPdfclicked(view: View) {
+        startActivity(Intent(this , PdfAddActivity::class.java))
+    }
+
 }

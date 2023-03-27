@@ -56,7 +56,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name_til"
+                android:id="@+id/titleTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintEnabled="false"
@@ -88,7 +88,7 @@
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name_til"
+                app:layout_constraintTop_toBottomOf="@+id/titleTil"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
