@@ -2,6 +2,7 @@ package com.example.testing.recyclerview.bookapp
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,6 +56,13 @@ class AdapterCatagory(
                     a.dismiss()
                 }
                 .show()
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context , PdfListAdminActivity::class.java)
+            intent.putExtra("categoryId", id)
+            intent.putExtra("category", catagory)
+            context.startActivity(intent)
         }
     }
 
