@@ -33,7 +33,7 @@ class DashboardAdminActivity : AppCompatActivity() {
         loadCategories()
 
         //search
-        binding.searchbox.addTextChangedListener(object : TextWatcher{
+        binding.SearchEt.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }

@@ -65,6 +65,7 @@ class CatagoryAddActivity : AppCompatActivity() {
                 //added successfully
                 progressDialog.dismiss()
                 Toast.makeText(this, "Added successfully...", Toast.LENGTH_SHORT).show()
+                binding.AddPdfEt.setText("")
             }
             .addOnFailureListener { e ->
 

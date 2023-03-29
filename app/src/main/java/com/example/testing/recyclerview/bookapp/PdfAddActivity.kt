@@ -4,15 +4,14 @@ import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.example.testing.recyclerview.bookapp.databinding.ActivityPdfAddBinding
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -22,8 +21,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class PdfAddActivity : AppCompatActivity() {
     lateinit var binding: ActivityPdfAddBinding
@@ -189,8 +186,8 @@ class PdfAddActivity : AppCompatActivity() {
                 val uriTask: Task<Uri> = tasksnapshot.storage.downloadUrl
 
                 while (!uriTask.isSuccessful);
-                val uploadPdfUrl = "{$uriTask.result}"
-
+                val uploadPdfUrl = "${uriTask.result}"
+                Log.d("pdfurl",uploadPdfUrl)
                 uploadPdfInfoToDb(uploadPdfUrl, timestamp)
             }
             .addOnFailureListener { e ->

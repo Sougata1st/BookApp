@@ -9,7 +9,7 @@
     tools:context=".DashboardAdminActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/action_bar"
+        android:id="@+id/toolbarCl"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@drawable/shape_toolbar02"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/DashboardUser"
+            android:id="@+id/TitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dashboard Admin"
@@ -39,7 +39,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/DashboardUser" />
+            app:layout_constraintTop_toBottomOf="@id/TitleTv" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -50,14 +50,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.92"
-            app:layout_constraintStart_toEndOf="@+id/DashboardUser"
+            app:layout_constraintStart_toEndOf="@+id/TitleTv"
             app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-        android:id="@+id/searchbox"
+        android:id="@+id/SearchEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -68,7 +68,7 @@
         android:hint="Search"
         android:padding="10dp"
         android:textColorHint="@color/gray01"
-        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarCl" />
 
     <!--    Catagories-->
     <androidx.recyclerview.widget.RecyclerView
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/row_category"
-        app:layout_constraintTop_toBottomOf="@+id/searchbox" />
+        app:layout_constraintTop_toBottomOf="@+id/SearchEt" />
 
 
     <!--    Buttom Layout-->
