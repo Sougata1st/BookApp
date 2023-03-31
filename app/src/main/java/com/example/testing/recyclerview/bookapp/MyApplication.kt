@@ -1,11 +1,14 @@
 package com.example.testing.recyclerview.bookapp
 
 import android.app.Application
+import android.app.ProgressDialog
+import android.content.Context
 import android.text.format.DateFormat
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import com.example.testing.recyclerview.bookapp.Constants.Constants
 import com.github.barteksc.pdfviewer.PDFView
 import com.google.firebase.database.DataSnapshot
@@ -109,5 +112,51 @@ class MyApplication : Application() {
                 })
         }
 
+        fun deleteBook(context: Context, bookId: String, bookUrl: String, bookTitle: String) {
+            Log.d("sougata",bookUrl.toString())
+            val progressBarDialog = ProgressDialog(context)
+            progressBarDialog.setTitle("Please wait")
+            progressBarDialog.setMessage("Deleting $bookTitle...")
+            progressBarDialog.setCanceledOnTouchOutside(false)
+            progressBarDialog.show()
+
+            val storegeRef = FirebaseStorage.getInstance().getReferenceFromUrl(bookUrl)
+            storegeRef.delete()
+                .addOnSuccessListener {
+
+                    val dbRef = FirebaseDatabase.getInstance().getReference("Books")
+                    dbRef.child(bookId).removeValue()
+                        .addOnSuccessListener {
+
+                            progressBarDialog.dismiss()
+
+                            Toast.makeText(
+                                context,
+                                "Successfully deleted",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
+                        .addOnFailureListener { e->
+                            progressBarDialog.dismiss()
+                            Toast.makeText(
+                                context,
+                                "Failed to delete from Storege due to ${e.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                }
+                .addOnFailureListener { e ->
+                    progressBarDialog.dismiss()
+                    Toast.makeText(
+                        context,
+                        "Failed to delete from Storege due to ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
+
     }
+
+
 }

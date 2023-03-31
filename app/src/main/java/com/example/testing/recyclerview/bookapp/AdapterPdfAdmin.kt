@@ -1,6 +1,7 @@
 package com.example.testing.recyclerview.bookapp
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testing.recyclerview.bookapp.databinding.ActivityCatagoryAddBinding
 import com.example.testing.recyclerview.bookapp.databinding.RowPdfAdminBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList<ModelPdf>) :
     RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>(),Filterable {
@@ -54,6 +55,34 @@ class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList
         MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title , holder.pdfView, holder.progressBar , null)
 
         MyApplication.loadPdfSize(pdfUrl,title,holder.sizeTv)
+
+        holder.moreBtn.setOnClickListener {
+            moreOptionsDialog( model , holder)
+        }
+
+    }
+
+    private fun moreOptionsDialog(model: ModelPdf, holder: AdapterPdfAdmin.HolderPdfAdmin) {
+
+        val bookId = model.id
+        val bookUrl = model.url
+        val bookTitle = model.title
+
+        //Options to show in dialogue
+        val items = arrayOf("Edit", "Delete")
+        MaterialAlertDialogBuilder(context)
+            .setTitle("Choose Options")
+            .setItems(items){dialog, which ->
+                if (which == 0){
+                    //Edit Clicked
+                    val intent = Intent(context, PdfEditActivity::class.java)
+                    intent.putExtra("bookId", bookId) // This book id will be uded to delete the book
+                    context.startActivity(intent)
+                }else if (which == 1){
+                    //Delete Clicked
+                    MyApplication.deleteBook(context , bookId , bookUrl ,bookTitle)
+                }
+            }.show()
     }
 
     //viewholder class
