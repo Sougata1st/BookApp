@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
+import kotlin.collections.HashMap
 
 class MyApplication : Application() {
     override fun onCreate() {
@@ -154,6 +155,66 @@ class MyApplication : Application() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+        }
+
+        fun incrementBookViewCount(bookId: String){
+            //get Curr book views Count
+            val ref = FirebaseDatabase.getInstance().getReference("Books")
+            ref.child(bookId)
+                .addListenerForSingleValueEvent(object :ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var viewsCount = snapshot.child("viewsCount").value.toString()
+                        if (viewsCount == ""||viewsCount==null){
+                            viewsCount ="0"
+                        }
+
+                        val newViewsCount = viewsCount.toLong() + 1
+
+                        //setup to data in DB
+                        val hashMap:HashMap<String , Any> = HashMap()
+                        hashMap["viewsCount"] = newViewsCount
+
+                        val dbRef = FirebaseDatabase.getInstance().getReference("Books")
+                        dbRef.child(bookId).updateChildren(hashMap)
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                })
+
+        }
+
+        fun incrementBookDownloadCount(bookId: String){
+            //get Curr book views Count
+            val ref = FirebaseDatabase.getInstance().getReference("Books")
+            ref.child(bookId)
+                .addListenerForSingleValueEvent(object :ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var downloadsCouunt = snapshot.child("downloadsCouunt").value.toString()
+                        if (downloadsCouunt == ""||downloadsCouunt==null){
+                            downloadsCouunt ="0"
+                        }
+
+                        val newDownloadsCount = downloadsCouunt.toLong() + 1
+
+                        //setup to data in DB
+                        val hashMap:HashMap<String , Any> = HashMap()
+                        hashMap["downloadsCouunt"] = newDownloadsCount
+
+                        val dbRef = FirebaseDatabase.getInstance().getReference("Books")
+                        dbRef.child(bookId).updateChildren(hashMap)
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                })
+
         }
 
     }
