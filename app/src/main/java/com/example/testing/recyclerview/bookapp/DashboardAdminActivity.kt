@@ -108,4 +108,9 @@ class DashboardAdminActivity : AppCompatActivity() {
         startActivity(Intent(this , PdfAddActivity::class.java))
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+    }
+
 }

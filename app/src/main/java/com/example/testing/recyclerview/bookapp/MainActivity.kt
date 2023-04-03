@@ -22,6 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     // skip btn clicked
     fun Skipclicked(view: View) {
-        startActivity(Intent(this, DashboardUserActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

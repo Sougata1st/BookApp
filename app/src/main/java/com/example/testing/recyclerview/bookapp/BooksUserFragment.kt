@@ -112,7 +112,12 @@ class BooksUserFragment : Fragment {
                     pdfArrayList.add(model!!)
                 }
                 //setup Adapter
-                adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+                try {
+                    adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+                }catch (e: Exception){
+                    Log.d("sougataexception", e.message.toString())
+                }
+
 
                 //set adapter to recyclerview
                 binding.booksRv.adapter = adapterPdfUser
@@ -137,7 +142,12 @@ class BooksUserFragment : Fragment {
                     pdfArrayList.add(model!!)
                 }
                 //setup Adapter
-                adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+                try {
+                    adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+                }catch (e: Exception){
+                    Log.d("sougataexception", e.message.toString())
+                }
+                //adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
 
                 //set adapter to recyclerview
                 binding.booksRv.adapter = adapterPdfUser
@@ -146,7 +156,6 @@ class BooksUserFragment : Fragment {
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         })
     }
 
@@ -161,7 +170,15 @@ class BooksUserFragment : Fragment {
                         pdfArrayList.add(model!!)
                     }
                     //setup Adapter
-                    adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+                    try {
+                        adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+                        adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+                        adapterPdfUser = AdapterPdfUser(context!!,pdfArrayList)
+
+                    }catch (e: Exception){
+                        Log.d("sougataexception", e.message.toString())
+                    }
+
 
                     //set adapter to recyclerview
                     binding.booksRv.adapter = adapterPdfUser

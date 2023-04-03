@@ -18,22 +18,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="100dp"
-            android:layout_height="140dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.github.barteksc.pdfviewer.PDFView
-                android:id="@+id/pdfView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/pdf_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/pdfView" />
+                android:background="@color/white"
+                android:src="@drawable/pdf_image"
+                tools:layout_editor_absoluteX="-38dp"
+                tools:layout_editor_absoluteY="0dp" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -97,6 +94,8 @@
             android:layout_margin="10dp"
             android:maxLines="1"
             android:text="Category"
+            android:maxLength="4"
+            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -106,10 +105,10 @@
             android:id="@+id/sizeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="116dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:maxLines="1"
-            android:text=""
+            android:text="____KB"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

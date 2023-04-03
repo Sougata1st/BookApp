@@ -67,6 +67,8 @@ class MyApplication : Application() {
             pagesTv: TextView?
         ) {
 
+            Log.d("barbarreload","load hocche bar bar")
+
             val ref = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
 
             ref.getBytes(Constants.MAX_BYTES_PDF)

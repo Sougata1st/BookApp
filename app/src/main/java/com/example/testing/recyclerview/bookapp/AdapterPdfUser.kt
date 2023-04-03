@@ -51,7 +51,7 @@ class AdapterPdfUser(
         MyApplication.loadCategory(catagoryId , holder.catagoryTv)
 
         //we dont need page no here , pass null for page no || load pdf thumbnail
-        MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title , holder.pdfView, holder.progressBar , null)
+       // MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title , holder.pdfView, holder.progressBar , null)
 
         MyApplication.loadPdfSize(pdfUrl,title,holder.sizeTv)
 
@@ -63,8 +63,8 @@ class AdapterPdfUser(
     }
 
     inner class viewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
-        val pdfView = binding.pdfView
-        val progressBar = binding.progressBar
+//        val pdfView = binding.pdfView
+//        val progressBar = binding.progressBar
         val titleTv = binding.titleTv
         val descriptionTv = binding.descriptionTv
         val catagoryTv = binding.categoryTv

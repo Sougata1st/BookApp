@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
          var email = binding.emailEt.text.toString().trim()
          var pass = binding.passwordEt.text.toString().trim()
         if (email.isEmpty()) {
-            Toast.makeText(this, "Enter your name...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enter the email address...", Toast.LENGTH_SHORT).show()
         } else if (pass.isEmpty()) {
             Toast.makeText(this, "Enter password...", Toast.LENGTH_SHORT).show()
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
