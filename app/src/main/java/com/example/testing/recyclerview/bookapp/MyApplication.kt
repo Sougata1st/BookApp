@@ -99,12 +99,15 @@ class MyApplication : Application() {
         }
 
         fun loadCategory(categoryId: String , categoryTv: TextView){
+
             //load pdf from Firebase by CategoryId
             val ref = FirebaseDatabase.getInstance().getReference("Catagories")
             ref.child(categoryId)
                 .addListenerForSingleValueEvent(object :ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val category = snapshot.child("catagory").value as String
+                        val model = snapshot.getValue(ModelCategory::class.java)
+                        val category = model?.catagory
+                        Log.d("seetheerror",category.toString())
                         categoryTv.text = category
                     }
 
