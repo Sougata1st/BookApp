@@ -11,7 +11,10 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.testing.recyclerview.bookapp.databinding.RowCategoryBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class AdapterCatagory(
     private val context: Context,
@@ -75,6 +78,26 @@ class AdapterCatagory(
             ref.child(id)
                 .removeValue()
                 .addOnSuccessListener {
+
+                    val bookref = FirebaseDatabase.getInstance().getReference("Books")
+                    bookref.addListenerForSingleValueEvent(object :ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for (ds in snapshot.children){
+                                val bookmodel = ds.getValue(ModelPdf::class.java)
+                                if (bookmodel?.categoryId == id){
+                                    FirebaseDatabase.getInstance().getReference("Books").child(bookmodel.id)
+                                        .removeValue().addOnSuccessListener {
+                                            MyApplication.deleteBook(context,bookmodel.id,bookmodel.url,bookmodel.title)
+                                        }
+                                }
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
                     Toast.makeText(context,"Deleted",Toast.LENGTH_SHORT).show()
 
                 }
