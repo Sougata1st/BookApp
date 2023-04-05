@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.testing.recyclerview.bookapp.databinding.ActivityCatagoryAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -64,7 +65,8 @@ class CatagoryAddActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 //added successfully
                 progressDialog.dismiss()
-                Toast.makeText(this, "Added successfully...", Toast.LENGTH_SHORT).show()
+                MyApplication.showSnackBar(findViewById(android.R.id.content),"Added Successfully...",this,
+                    ContextCompat.getColor(this,R.color.green), ContextCompat.getColor(this,R.color.black))
                 binding.AddPdfEt.setText("")
             }
             .addOnFailureListener { e ->

@@ -9,15 +9,16 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.testing.recyclerview.bookapp.Constants.Constants
 import com.github.barteksc.pdfviewer.PDFView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
-import kotlin.collections.HashMap
 
 class MyApplication : Application() {
     override fun onCreate() {
@@ -192,21 +193,21 @@ class MyApplication : Application() {
 
         }
 
-        fun incrementBookDownloadCount(bookId: String){
+        fun incrementBookDownloadCount(bookId: String) {
             //get Curr book views Count
             val ref = FirebaseDatabase.getInstance().getReference("Books")
             ref.child(bookId)
-                .addListenerForSingleValueEvent(object :ValueEventListener{
+                .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         var downloadsCouunt = snapshot.child("downloadsCouunt").value.toString()
-                        if (downloadsCouunt == ""||downloadsCouunt==null){
-                            downloadsCouunt ="0"
+                        if (downloadsCouunt == "" || downloadsCouunt == null) {
+                            downloadsCouunt = "0"
                         }
 
                         val newDownloadsCount = downloadsCouunt.toLong() + 1
 
                         //setup to data in DB
-                        val hashMap:HashMap<String , Any> = HashMap()
+                        val hashMap: HashMap<String, Any> = HashMap()
                         hashMap["downloadsCouunt"] = newDownloadsCount
 
                         val dbRef = FirebaseDatabase.getInstance().getReference("Books")
@@ -220,6 +221,16 @@ class MyApplication : Application() {
 
                 })
 
+        }
+
+        fun showSnackBar(view: View?, msg: String?, context: Context, snackbarBg: Int,textColor:Int) {
+            if (view != null) {
+                val snackbar = Snackbar.make(view, msg!!, Snackbar.LENGTH_LONG)
+                val snackbarView = snackbar.view
+               snackbarView.setBackgroundColor(snackbarBg)
+                snackbar.setTextColor(textColor)
+                snackbar.show()
+            }
         }
 
     }

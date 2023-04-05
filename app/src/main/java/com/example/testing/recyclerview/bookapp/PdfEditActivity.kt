@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.testing.recyclerview.bookapp.databinding.ActivityPdfEditBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -21,6 +22,7 @@ class PdfEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPdfEditBinding
 
     private var bookId = ""
+    private var categoryId = ""
 
     private lateinit var progressDialog: ProgressDialog
 
@@ -35,6 +37,7 @@ class PdfEditActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         bookId = intent.getStringExtra("bookId")!!
+        categoryId = intent.getStringExtra("categoryId")!!
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please wait")
         progressDialog.setCanceledOnTouchOutside(false)
@@ -137,19 +140,19 @@ class PdfEditActivity : AppCompatActivity() {
         val hashMap: HashMap<String, Any> = HashMap()
         hashMap["title"] = title
         hashMap["description"] = description
-        hashMap["categoryId"] = selectedCategoryId
-        Log.d("selectedCategoryId" , selectedCategoryId)
+        hashMap["categoryId"] = categoryId
 
         val ref = FirebaseDatabase.getInstance().getReference("Books")
         ref.child(bookId)
             .updateChildren(hashMap)
             .addOnSuccessListener {
-                Toast.makeText(this, "Updated Data Successfully...", Toast.LENGTH_SHORT).show()
+                MyApplication.showSnackBar(findViewById(android.R.id.content),"Updated data Successfully",this,
+                    ContextCompat.getColor(this,R.color.green), ContextCompat.getColor(this,R.color.black))
                 progressDialog.dismiss()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Failed to upload due to ${e.message}", Toast.LENGTH_SHORT)
-                    .show()
+                MyApplication.showSnackBar(findViewById(android.R.id.content),"Uploaded...",this,
+                    ContextCompat.getColor(this,R.color.red),ContextCompat.getColor(this,R.color.white))
                 progressDialog.dismiss()
             }
     }
@@ -160,16 +163,17 @@ class PdfEditActivity : AppCompatActivity() {
 
 
     private var selectedCategoryTitle = ""
-    private var selectedCategoryId = ""
+
     private fun showCategoryDialog() {
         val categoriesArray = arrayOfNulls<String>(categoryTitleArrayList.size)
         for (i in categoryTitleArrayList.indices) {
             categoriesArray[i] = categoryTitleArrayList[i]
         }
+
         MaterialAlertDialogBuilder(this)
             .setTitle("Select Category")
             .setItems(categoriesArray) { dialog, pos ->
-                selectedCategoryId = categoryIdArrayList[pos]
+                categoryId = categoryIdArrayList[pos]
                 selectedCategoryTitle = categoryTitleArrayList[pos]
                 binding.categoryTv.text = selectedCategoryTitle
             }

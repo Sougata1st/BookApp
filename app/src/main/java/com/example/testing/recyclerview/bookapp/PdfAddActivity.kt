@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.testing.recyclerview.bookapp.databinding.ActivityPdfAddBinding
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -223,8 +224,10 @@ class PdfAddActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d(TAG, "uploadPdfInfoToDb: Uploaded pdf to db")
                 progressDialog.dismiss()
-                Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT)
-                    .show()
+
+                MyApplication.showSnackBar(findViewById(android.R.id.content),"Uploaded...",this,
+                    ContextCompat.getColor(this,R.color.green),ContextCompat.getColor(this,R.color.black))
+
                 pdfuri = null
             }
             .addOnFailureListener {e->
