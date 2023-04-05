@@ -1,5 +1,6 @@
 package com.example.testing.recyclerview.bookapp
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testing.recyclerview.bookapp.databinding.RowPdfAdminBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -73,6 +75,7 @@ class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList
         val bookId = model.id
         val bookUrl = model.url
         val bookTitle = model.title
+        val categoryId = model.categoryId
 
         //Options to show in dialogue
         val items = arrayOf("Edit", "Delete")
@@ -83,10 +86,24 @@ class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList
                     //Edit Clicked
                     val intent = Intent(context, PdfEditActivity::class.java)
                     intent.putExtra("bookId", bookId) // This book id will be uded to delete the book
+                    intent.putExtra("categoryId",categoryId) // used to fetch the category
                     context.startActivity(intent)
                 }else if (which == 1){
                     //Delete Clicked
-                    MyApplication.deleteBook(context , bookId , bookUrl ,bookTitle)
+
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle("Delete")
+                        .setMessage("Are you sure , you want to delete this Book?")
+                        .setPositiveButton("Confirm"){a,d->
+                            //show the toast message
+                            Toast.makeText(context,"Deleting...", Toast.LENGTH_SHORT).show()
+                            MyApplication.deleteBook(context , bookId , bookUrl ,bookTitle)
+                        }
+                        .setNegativeButton("Cancel"){a,d->
+                            a.dismiss()
+                        }
+                        .show()
+
                 }
             }.show()
     }
