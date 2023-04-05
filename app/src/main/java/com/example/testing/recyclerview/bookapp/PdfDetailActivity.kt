@@ -9,6 +9,7 @@ import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.testing.recyclerview.bookapp.Constants.Constants
 import com.example.testing.recyclerview.bookapp.MyApplication.Companion.incrementBookViewCount
 import com.example.testing.recyclerview.bookapp.databinding.ActivityPdfDetailBinding
@@ -155,7 +156,8 @@ class PdfDetailActivity : AppCompatActivity() {
 
             out.write(bytes)
             out.close()
-            Toast.makeText(this,"Saved to Downloads Folder", Toast.LENGTH_LONG).show()
+            MyApplication.showSnackBar(findViewById(android.R.id.content),"Saved to Downloads Folder",this,
+                ContextCompat.getColor(this,R.color.green),ContextCompat.getColor(this,R.color.black))
             progressDialog.dismiss()
 
             MyApplication.incrementBookDownloadCount(bookId)
