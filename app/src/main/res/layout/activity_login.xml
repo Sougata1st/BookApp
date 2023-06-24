@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back01"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -99,6 +99,7 @@
                     android:drawableStart="@drawable/ic_lock_gray"
                     android:drawablePadding="10dp"
                     android:hint="Password"
+                    android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray01" />

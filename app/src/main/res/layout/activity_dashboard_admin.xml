@@ -6,7 +6,7 @@
 
     android:layout_height="match_parent"
     android:background="@drawable/back01"
-    tools:context=".DashboardAdminActivity">
+    tools:context=".activities.DashboardAdminActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarCl"
@@ -52,6 +52,19 @@
             app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintStart_toEndOf="@+id/TitleTv"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:onClick="manageProfileClicked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_person_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="3dp"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

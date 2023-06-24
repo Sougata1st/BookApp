@@ -1,21 +1,20 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
+import android.R
 import android.app.ProgressDialog
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.testing.recyclerview.bookapp.MyApplication
 import com.example.testing.recyclerview.bookapp.databinding.ActivityPdfEditBinding
+import com.example.testing.recyclerview.bookapp.models.ModelCategory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.FirebaseStorage
 
 
 class PdfEditActivity : AppCompatActivity() {
@@ -146,13 +145,35 @@ class PdfEditActivity : AppCompatActivity() {
         ref.child(bookId)
             .updateChildren(hashMap)
             .addOnSuccessListener {
-                MyApplication.showSnackBar(findViewById(android.R.id.content),"Updated data Successfully",this,
-                    ContextCompat.getColor(this,R.color.green), ContextCompat.getColor(this,R.color.black))
+                MyApplication.showSnackBar(
+                    findViewById(R.id.content),
+                    "Updated data Successfully",
+                    this,
+                    ContextCompat.getColor(
+                        this,
+                        com.example.testing.recyclerview.bookapp.R.color.green
+                    ),
+                    ContextCompat.getColor(
+                        this,
+                        com.example.testing.recyclerview.bookapp.R.color.black
+                    )
+                )
                 progressDialog.dismiss()
             }
             .addOnFailureListener { e ->
-                MyApplication.showSnackBar(findViewById(android.R.id.content),"Uploaded...",this,
-                    ContextCompat.getColor(this,R.color.red),ContextCompat.getColor(this,R.color.white))
+                MyApplication.showSnackBar(
+                    findViewById(R.id.content),
+                    "Uploaded...",
+                    this,
+                    ContextCompat.getColor(
+                        this,
+                        com.example.testing.recyclerview.bookapp.R.color.red
+                    ),
+                    ContextCompat.getColor(
+                        this,
+                        com.example.testing.recyclerview.bookapp.R.color.white
+                    )
+                )
                 progressDialog.dismiss()
             }
     }

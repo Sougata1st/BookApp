@@ -1,7 +1,8 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.filters
 
-import android.util.Log
 import android.widget.Filter
+import com.example.testing.recyclerview.bookapp.adapter.AdapterPdfAdmin
+import com.example.testing.recyclerview.bookapp.models.ModelPdf
 
 //filter pdf from recycleview | search pdf
 class FilterPdfAdmin(

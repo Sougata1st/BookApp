@@ -1,4 +1,4 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -9,10 +9,8 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import com.example.testing.recyclerview.bookapp.databinding.ActivityRegisterBinding
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
@@ -113,7 +111,7 @@ class RegisterActivity : AppCompatActivity() {
                 //user info saved , open user dashboard
                 progressDialog.dismiss()
                 Toast.makeText(this,"account created...",Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this,DashboardUserActivity::class.java))
+                startActivity(Intent(this, DashboardUserActivity::class.java))
             }
             .addOnFailureListener{e->
                 //failed adding data to db

@@ -1,4 +1,4 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     // skip btn clicked
     fun Skipclicked(view: View) {
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, DashboardUserActivity::class.java))
     }
 }

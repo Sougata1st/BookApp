@@ -1,4 +1,4 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.testing.recyclerview.bookapp.BooksUserFragment
 import com.example.testing.recyclerview.bookapp.databinding.ActivityDashboardUserBinding
+import com.example.testing.recyclerview.bookapp.models.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -152,9 +154,12 @@ class DashboardUserActivity : AppCompatActivity() {
         val FirebaseUser = firebaseAuth.currentUser
         if (FirebaseUser != null) {
             binding.subTitleTv.text = FirebaseUser.email
+            binding.profileBtn.visibility = View.VISIBLE
+            binding.logOutBtn.visibility = View.VISIBLE
         } else {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            binding.subTitleTv.text = "Not Logged In"
+            binding.profileBtn.visibility = View.GONE
+            binding.logOutBtn.visibility = View.GONE
         }
     }
 
@@ -166,5 +171,9 @@ class DashboardUserActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finishAffinity()
+    }
+
+    fun manageProfileClicked(view: View) {
+        startActivity(Intent(this,ProfileActivity::class.java))
     }
 }

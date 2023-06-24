@@ -1,4 +1,4 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
 import android.app.ProgressDialog
 import android.content.Intent

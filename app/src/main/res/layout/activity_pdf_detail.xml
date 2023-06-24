@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".PdfDetailActivity">
+    tools:context=".activities.PdfDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbarCl"
@@ -261,8 +261,9 @@
         <Button
             android:id="@+id/readBookBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="10sp"
             android:background="@color/design_default_color_primary"
             android:drawableTop="@drawable/ic_book_white"
             android:onClick="readBookClicked"
@@ -271,13 +272,25 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="10sp"
             android:background="@color/design_default_color_primary"
             android:drawableTop="@drawable/ic_download_white"
             android:onClick="downloadClicked"
             android:padding="5dp"
             android:text="Download" />
+
+        <Button
+            android:id="@+id/favouriteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/design_default_color_primary"
+            android:drawableTop="@drawable/ic_favourite_white"
+            android:onClick="favouriteClicked"
+            android:text="Add Favourite"
+            android:textSize="10sp" />
 
     </LinearLayout>
 

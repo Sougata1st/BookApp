@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back01"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
 <!--    toolbar-->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -139,7 +139,7 @@
                     android:drawableStart="@drawable/ic_lock_gray"
                     android:drawablePadding="10dp"
                     android:hint="Password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray01" />
@@ -165,7 +165,7 @@
                     android:drawableStart="@drawable/ic_lock_gray"
                     android:drawablePadding="10dp"
                     android:hint="COnfirm Password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray01" />

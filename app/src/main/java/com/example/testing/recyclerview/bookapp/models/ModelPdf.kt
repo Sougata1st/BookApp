@@ -1,4 +1,4 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.models
 
 class ModelPdf {
     //variables

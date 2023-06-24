@@ -1,5 +1,6 @@
 package com.example.testing.recyclerview.bookapp
 
+import android.R
 import android.app.Application
 import android.app.ProgressDialog
 import android.content.Context
@@ -11,8 +12,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.testing.recyclerview.bookapp.Constants.Constants
+import com.example.testing.recyclerview.bookapp.models.ModelCategory
 import com.github.barteksc.pdfviewer.PDFView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -171,7 +174,7 @@ class MyApplication : Application() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         var viewsCount = snapshot.child("viewsCount").value.toString()
                         if (viewsCount == ""||viewsCount==null){
-                            viewsCount ="0"
+                            viewsCount ="1"
                         }
 
                         val newViewsCount = viewsCount.toLong() + 1
@@ -231,6 +234,27 @@ class MyApplication : Application() {
                 snackbar.setTextColor(textColor)
                 snackbar.show()
             }
+        }
+
+         fun removeFromFavourite(context: Context,bookId: String) {
+            val firebaseAuth= FirebaseAuth.getInstance()
+            val ref = FirebaseDatabase.getInstance().getReference("Users")
+            ref.child(firebaseAuth.uid!!)
+                .child("Favourites").child(bookId).removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        context,
+                        "Removed from favourites",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                .addOnFailureListener{ e ->
+                    Toast.makeText(
+                        context,
+                        "Failed to remove from favourites due to ${e.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
         }
 
     }

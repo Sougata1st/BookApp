@@ -1,16 +1,20 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.adapter
 
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.testing.recyclerview.bookapp.filters.FilterCatagory
+import com.example.testing.recyclerview.bookapp.MyApplication
+import com.example.testing.recyclerview.bookapp.activities.PdfListAdminActivity
 import com.example.testing.recyclerview.bookapp.databinding.RowCategoryBinding
+import com.example.testing.recyclerview.bookapp.models.ModelCategory
+import com.example.testing.recyclerview.bookapp.models.ModelPdf
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -23,7 +27,7 @@ class AdapterCatagory(
     private lateinit var binding: RowCategoryBinding
     var categoryArrayList:ArrayList<ModelCategory> =categoryArrayList
     private var filterList:ArrayList<ModelCategory> = categoryArrayList
-    private var filter:FilterCatagory? = null
+    private var filter: FilterCatagory? = null
 
     inner class viwholder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var catagoryTv:TextView = binding.categoryTv
@@ -87,7 +91,12 @@ class AdapterCatagory(
                                 if (bookmodel?.categoryId == id){
                                     FirebaseDatabase.getInstance().getReference("Books").child(bookmodel.id)
                                         .removeValue().addOnSuccessListener {
-                                            MyApplication.deleteBook(context,bookmodel.id,bookmodel.url,bookmodel.title)
+                                            MyApplication.deleteBook(
+                                                context,
+                                                bookmodel.id,
+                                                bookmodel.url,
+                                                bookmodel.title
+                                            )
                                         }
                                 }
                             }

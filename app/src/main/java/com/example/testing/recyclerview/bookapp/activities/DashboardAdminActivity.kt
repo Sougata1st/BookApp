@@ -1,4 +1,4 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import com.example.testing.recyclerview.bookapp.adapter.AdapterCatagory
 import com.example.testing.recyclerview.bookapp.databinding.ActivityDashboardAdminBinding
-import com.example.testing.recyclerview.bookapp.databinding.ActivityDashboardUserBinding
+import com.example.testing.recyclerview.bookapp.models.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -111,6 +112,10 @@ class DashboardAdminActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finishAffinity()
+    }
+
+    fun manageProfileClicked(view: View) {
+        startActivity(Intent(this,ProfileActivity::class.java))
     }
 
 }

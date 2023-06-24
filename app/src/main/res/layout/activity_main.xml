@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/back01"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_button02"
-        android:text="Admin login"
+        android:text="COntinue without login"
         android:textColor="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_button01"
-        android:text="user Login"
+        android:text="Login"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/skipbutton"
         app:layout_constraintEnd_toEndOf="parent"

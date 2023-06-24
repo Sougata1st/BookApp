@@ -1,4 +1,4 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

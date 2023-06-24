@@ -1,9 +1,8 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.adapter
 
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,12 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testing.recyclerview.bookapp.filters.FilterPdfAdmin
+import com.example.testing.recyclerview.bookapp.MyApplication
+import com.example.testing.recyclerview.bookapp.activities.PdfDetailActivity
+import com.example.testing.recyclerview.bookapp.activities.PdfEditActivity
 import com.example.testing.recyclerview.bookapp.databinding.RowPdfAdminBinding
+import com.example.testing.recyclerview.bookapp.models.ModelPdf
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList<ModelPdf>) :
@@ -19,7 +23,7 @@ class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList
 
     private lateinit var binding: RowPdfAdminBinding
     private var filterList:ArrayList<ModelPdf> = pdfArrayList
-    private var filter:FilterPdfAdmin? = null
+    private var filter: FilterPdfAdmin? = null
 
 
     //oncreate
@@ -51,12 +55,12 @@ class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList
         //Load further details i.e category, pdf from url , pdf size
 
         //load category
-        MyApplication.loadCategory(catagoryId , holder.catagoryTv)
+        MyApplication.loadCategory(catagoryId, holder.catagoryTv)
 
         //we dont need page no here , pass null for page no || load pdf thumbnail
         //MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title , holder.pdfView, holder.progressBar , null)
 
-        MyApplication.loadPdfSize(pdfUrl,title,holder.sizeTv)
+        MyApplication.loadPdfSize(pdfUrl, title, holder.sizeTv)
 
         holder.moreBtn.setOnClickListener {
             moreOptionsDialog( model , holder)
@@ -70,7 +74,7 @@ class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList
 
     }
 
-    private fun moreOptionsDialog(model: ModelPdf, holder: AdapterPdfAdmin.HolderPdfAdmin) {
+    private fun moreOptionsDialog(model: ModelPdf, holder: HolderPdfAdmin) {
 
         val bookId = model.id
         val bookUrl = model.url
@@ -97,7 +101,7 @@ class AdapterPdfAdmin(private val context: Context,  var pdfArrayList: ArrayList
                         .setPositiveButton("Confirm"){a,d->
                             //show the toast message
                             Toast.makeText(context,"Deleting...", Toast.LENGTH_SHORT).show()
-                            MyApplication.deleteBook(context , bookId , bookUrl ,bookTitle)
+                            MyApplication.deleteBook(context, bookId, bookUrl, bookTitle)
                         }
                         .setNegativeButton("Cancel"){a,d->
                             a.dismiss()

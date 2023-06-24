@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.testing.recyclerview.bookapp.adapter.AdapterPdfUser
 import com.example.testing.recyclerview.bookapp.databinding.FragmentBooksUserBinding
+import com.example.testing.recyclerview.bookapp.models.ModelPdf
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

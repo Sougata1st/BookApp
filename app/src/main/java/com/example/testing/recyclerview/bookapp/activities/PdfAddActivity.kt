@@ -1,5 +1,6 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.activities
 
+import android.R
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
@@ -13,7 +14,9 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.testing.recyclerview.bookapp.MyApplication
 import com.example.testing.recyclerview.bookapp.databinding.ActivityPdfAddBinding
+import com.example.testing.recyclerview.bookapp.models.ModelCategory
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -225,8 +228,19 @@ class PdfAddActivity : AppCompatActivity() {
                 Log.d(TAG, "uploadPdfInfoToDb: Uploaded pdf to db")
                 progressDialog.dismiss()
 
-                MyApplication.showSnackBar(findViewById(android.R.id.content),"Uploaded...",this,
-                    ContextCompat.getColor(this,R.color.green),ContextCompat.getColor(this,R.color.black))
+                MyApplication.showSnackBar(
+                    findViewById(R.id.content),
+                    "Uploaded...",
+                    this,
+                    ContextCompat.getColor(
+                        this,
+                        com.example.testing.recyclerview.bookapp.R.color.green
+                    ),
+                    ContextCompat.getColor(
+                        this,
+                        com.example.testing.recyclerview.bookapp.R.color.black
+                    )
+                )
 
                 pdfuri = null
             }

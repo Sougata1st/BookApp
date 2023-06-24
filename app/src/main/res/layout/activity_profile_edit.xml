@@ -4,21 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CatagoryAddActivity">
-
-<!--    toolbar-->
+    android:background="@drawable/back01"
+    tools:context=".activities.ProfileEditActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/shape_toolbar01"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
         <ImageButton
             android:id="@+id/backBtn"
-            android:onClick="AddCatbackbtnClicked"
+            android:onClick="backbtnClicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,29 +40,20 @@
             android:layout_margin="10dp"
             android:padding="10dp"/>
 
-        <ImageView
-            android:id="@+id/iconV"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileIv"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/logo"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="imageViewCLicked"
+            android:background="@color/white"
+            android:src="@drawable/ic_person"
+            android:layout_marginTop="70dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize25Percent"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Add new Catagory"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="@+id/iconV"
-            app:layout_constraintStart_toStartOf="@+id/iconV"
-            app:layout_constraintTop_toBottomOf="@+id/iconV" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -73,42 +76,39 @@
                 android:id="@+id/titleTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
-                    android:id="@+id/AddPdfEt"
+                    android:id="@+id/nameEditEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_edittext01"
-                    android:drawableStart="@drawable/ic_catagory"
+                    android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="10dp"
-                    android:hint="Catagory Title"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray01" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="Submitclicked"
-                android:background="@drawable/shape_button01"
-                android:layout_marginTop="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleTil"
-                android:text="Submit"
-                android:textColor="@color/white"/>
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textColor="@color/white"
+               android:text="update"
+               android:onClick="updateClicked"
+               app:layout_constraintTop_toBottomOf="@+id/titleTil"
+               android:background="@drawable/shape_button01"
+               android:layout_marginTop="20dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

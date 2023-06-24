@@ -1,16 +1,18 @@
-package com.example.testing.recyclerview.bookapp
+package com.example.testing.recyclerview.bookapp.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testing.recyclerview.bookapp.filters.FilterPdfUser
+import com.example.testing.recyclerview.bookapp.MyApplication
+import com.example.testing.recyclerview.bookapp.activities.PdfDetailActivity
 import com.example.testing.recyclerview.bookapp.databinding.RowPdfUserBinding
+import com.example.testing.recyclerview.bookapp.models.ModelPdf
 
 class AdapterPdfUser(
     private var context: Context,
@@ -49,12 +51,12 @@ class AdapterPdfUser(
         //Load further details i.e category, pdf from url , pdf size
 
         //load category
-        MyApplication.loadCategory(catagoryId , holder.catagoryTv)
+        MyApplication.loadCategory(catagoryId, holder.catagoryTv)
 
         //we dont need page no here , pass null for page no || load pdf thumbnail
        // MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title , holder.pdfView, holder.progressBar , null)
 
-        MyApplication.loadPdfSize(pdfUrl,title,holder.sizeTv)
+        MyApplication.loadPdfSize(pdfUrl, title, holder.sizeTv)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, PdfDetailActivity::class.java)
