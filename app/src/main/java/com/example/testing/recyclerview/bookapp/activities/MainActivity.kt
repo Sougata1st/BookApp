@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.skipbutton.visibility = View.GONE
+
     }
 
     // Login Clicked
@@ -22,6 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     // skip btn clicked
     fun Skipclicked(view: View) {
-        startActivity(Intent(this, DashboardUserActivity::class.java))
+        //startActivity(Intent(this, DashboardUserActivity::class.java))
     }
 }
