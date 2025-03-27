@@ -98,7 +98,7 @@ Login with these credentials to access admin features.
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone https://github.com/Sougata1st/BookApp.git
     ```
 2. **Open in Android Studio**
 3. **Add google services.json file**
